@@ -17,7 +17,6 @@ async function getProfilesData(uri) {
     return {
       level,
       militaryRank,
-      aircraftRank,
     }
   } catch(error) {
     console.log(error);
