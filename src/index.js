@@ -2,6 +2,7 @@ const request = require('request-promise');
 const cheerio = require('cheerio');
 const iconv = require('iconv-lite');
 const fs = require('fs');
+const moment = require('moment');
 const urls = require('./config');
 
 const getCurrentExp = data => data.split('/')[0].trim();
@@ -23,8 +24,6 @@ async function getProfilesData(data) {
     const isWarStash = !!$('ul.active_bonuses > li > span.rank_points').prop('title');
     const isPowerPack = !!$('ul.active_bonuses > li > span.energy_recovery').prop('title');
 
-    console.log('isPowerPack', isWarStash);
-
     return {
       id: data.id,
       currentExp,
@@ -39,11 +38,11 @@ async function getProfilesData(data) {
 }
 
 function saveDataToFile(data) {
-  fs.writeFile('data.json', JSON.stringify(data), 'utf8', (err, data) => {
+  fs.writeFile(`data-${ moment().format("MMM-Do-YY--h-mm-ss")}.json`, JSON.stringify(data), 'utf8', (err, data) => {
    if (err) {
     return console.log(err);
    }
-    console.log('data saved');
+    console.log('*********** DATA SAVED **********');
   });
 }
 
