@@ -1,0 +1,3 @@
+1. Current exp level (in numbers)
+2. Military Rank \ Aircraft Rank current exp level
+3. Active Enhancements \ Power Pack \ War Stash 
